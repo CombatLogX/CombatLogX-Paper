@@ -1,0 +1,164 @@
+## Main Configuration file for CombatLogX PaperMC
+## YAML Format Information: https://yaml.org/spec/1.1/
+## Please ensure that your text editor is configured to use spaces (not TAB characters)
+## This file should be saved as UTF-8
+
+# This value is automatically generated. Please do not modify this value.
+# Changing this version will risk corruption/deletion of your configuration files.
+generated-by-version: "${version}"
+
+# Changing this option to 'true' will enable messages used by developers for debugging purposes.
+# You should only enable this option when testing the plugin or generating logs for issue reports.
+#
+# Default: false
+debug-mode: false
+
+# Settings for the combat bypass permission.
+# Players with this permission will not receive combat tags.
+combat-bypass-permission:
+  # Enables or disables the combat bypass permission.
+  # When disabled, CombatLogX will ignore this permission entirely.
+  #
+  # Default: true
+  enabled: true
+
+  # The permission node used for combat bypass.
+  # If changed, you will need to update your permissions plugin configuration.
+  #
+  # Default: "combatlogx.bypass"
+  node: "combatlogx.bypass"
+
+  # The default state of the permission if it is not explicitly set.
+  # Some permission plugins may ignore this setting depending on configuration.
+  #
+  # Available values:
+  # 'FALSE'  - No players have the permission by default.
+  # 'TRUE'   - All players have the permission by default.
+  # 'OP'     - Only server operators have the permission by default.
+  # 'NOT_OP' - Only non-operators have the permission by default.
+  #
+  # Default: 'FALSE'
+  default: 'FALSE'
+
+  # A description of the permission.
+  # Some permission plugins may display this description to administrators.
+  #
+  # Default: "Immunity from combat tags."
+  description: "Immunity from combat tags."
+
+# Links damage caused by pets (such as wolves, cats, and other entities that can be tamed) to their owner.
+# When disabled, pets will remain as separate entities
+#
+# Default: true
+link-pets: true
+
+# Links projectile damage to the entity that fired the projectile.
+# When disabled, projectile damage will not trigger combat tagging.
+#
+# Default: true
+link-projectile-damage: true
+
+# A list of projectile EntityType values to ignore when linking damage to a shooter.
+# Ignored projectile types will not trigger combat tagging.
+#
+# If 'link-projectile-damage' is set to false, all projectile damage will be ignored.
+#
+# A list of valid entity types is available in the PaperMC Javadocs:
+# https://jd.papermc.io/paper/26.1.2/org/bukkit/entity/EntityType.html
+#
+# Default: [EGG, ENDER_PEARL, SNOWBALL]
+link-projectile-ignored-types:
+  - EGG
+  - ENDER_PEARL
+  - SNOWBALL
+
+# Links fishing rod hooks to the entity that cast the hook.
+# When disabled, fishing rods will not trigger combat tagging.
+#
+# Default: true
+link-fishing-rod: true
+
+# Links TNT to the entity that ignited it.
+# When disabled, TNT will not trigger combat tagging.
+#
+# Default: true
+link-tnt: true
+
+# Links end crystal entities to the player that placed the item.
+# When disabled, end crystal explosions will not trigger combat tagging.
+#
+# Default: true
+link-end-crystal: true
+
+# Should a player be combat tagged when they damage themselves with a projectile?
+#
+# Default: false
+self-combat: false
+
+# Should a player be removed from their combat tag when they die?
+#
+# Default: true
+untag-on-death: true
+
+# Should a player be removed from combat when their enemy is no longer alive?
+#
+# Default: true
+untag-on-enemy-death: true
+
+# Minecraft and some plugins add a 'no-damage' cooldown to players when logging in or teleporting.
+# Should CombatLogX attempt to remove this cooldown?
+# This may cause unfair deaths from spawn camping or teleportation traps.
+#
+# Default: false
+remove-no-damage-cooldown: false
+
+forgive:
+  # The cooldown (in seconds) between requests of forgiveness from a combat tag.
+  # Setting this to a value of less than '1' may allow spamming the command.
+  #
+  # Default: 30 (seconds)
+  request-cooldown: 30
+
+  # How long should a forgiveness request remain active?
+  # Setting this to a value of less than '2' may prevent players from replying to requests.
+  #
+  # Default: 10 (seconds)
+  request-expiration: 10
+
+# Controls how combat tag durations are determined.
+#
+# GLOBAL:
+# All players will use the same combat tag duration defined by 'default-timer'.
+#
+# PERMISSION:
+# Combat tag durations are determined by permission nodes.
+# Permission format: "combatlogx.timer.<seconds>"
+# Example: "combatlogx.timer.30"
+#
+# Players without a matching permission will use the 'default-timer' value.
+#
+# Default: GLOBAL
+timer-type: GLOBAL
+
+# This is the default amount of time that players will be tagged (in seconds).
+# This value will be used if the timer type is GLOBAL or if a permission cannot be detected.
+#
+# Default: 10
+default-timer: 10
+
+tps-limiter:
+  # Enables or disables the combat ticks-per-second limiter.
+  # When enabled, CombatLogX can stop tagging players until your server speed catches back up.
+  #
+  # Default: false
+  enabled: false
+
+  # This is the minimum TPS required for combat tagging.
+  # Most servers run at 20 TPS when there are no issues.
+  #
+  # Default: 15.0
+  minimum-tps: 15.0
+
+## End of 'config.yml' file.
+## If you are a server administrator, please take a look at the other configuration files generated by CombatLogX
+## Each expansion may also have their own configuration files.

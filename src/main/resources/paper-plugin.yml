@@ -1,0 +1,14 @@
+name: "CombatLogX"
+prefix: "CombatLogX"
+description: "A modular PaperMC server plugin that punishes players for logging out during combat."
+website: "https://www.sirblobman.xyz/combatlogx"
+
+main: "com.github.combatlogx.paper.CombatPlugin"
+version: "${version}"
+api-version: "26.1.2"
+load: "POSTWORLD"
+
+folia-supported: true
+
+authors:
+  - "SirBlobman"
