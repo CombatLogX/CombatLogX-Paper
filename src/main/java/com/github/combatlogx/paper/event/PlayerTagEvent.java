@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 import com.github.combatlogx.api.tag.CombatTag;
 import com.github.combatlogx.paper.player.CombatPlayerPaper;
 
-public final class PlayerPreTagEvent extends CancellableCombatPlayerEvent {
+public final class PlayerTagEvent extends CombatPlayerEvent {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 
     public static @NotNull HandlerList getHandlerList() {
@@ -21,7 +21,7 @@ public final class PlayerPreTagEvent extends CancellableCombatPlayerEvent {
 
     private final CombatTag tag;
 
-    public PlayerPreTagEvent(@NotNull CombatPlayerPaper player, @NotNull CombatTag tag) {
+    public PlayerTagEvent(@NotNull CombatPlayerPaper player, @NotNull CombatTag tag) {
         super(player, true);
         this.tag = tag;
     }

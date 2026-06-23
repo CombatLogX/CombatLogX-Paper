@@ -5,9 +5,10 @@ import org.jetbrains.annotations.NotNull;
 import org.bukkit.event.HandlerList;
 
 import com.github.combatlogx.api.tag.CombatTag;
+import com.github.combatlogx.api.tag.UntagReason;
 import com.github.combatlogx.paper.player.CombatPlayerPaper;
 
-public final class PlayerPreTagEvent extends CancellableCombatPlayerEvent {
+public final class PlayerUntagEvent extends CombatPlayerEvent {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 
     public static @NotNull HandlerList getHandlerList() {
@@ -20,13 +21,19 @@ public final class PlayerPreTagEvent extends CancellableCombatPlayerEvent {
     }
 
     private final CombatTag tag;
+    private final UntagReason reason;
 
-    public PlayerPreTagEvent(@NotNull CombatPlayerPaper player, @NotNull CombatTag tag) {
+    public PlayerUntagEvent(@NotNull CombatPlayerPaper player, @NotNull CombatTag tag, @NotNull UntagReason reason) {
         super(player, true);
         this.tag = tag;
+        this.reason = reason;
     }
 
     public @NotNull CombatTag getTag() {
         return this.tag;
+    }
+
+    public @NotNull UntagReason getReason() {
+        return this.reason;
     }
 }
